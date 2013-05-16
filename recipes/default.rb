@@ -55,7 +55,7 @@ template "/etc/default/jetty" do
   owner "root"
   group "root"
   mode "0644"
-  notifies :restart, resources(:service => "jetty"), :delayed
+  notifies :restart, "service[jetty]"
 end
 
 template "/etc/jetty/jetty.xml" do
@@ -63,7 +63,7 @@ template "/etc/jetty/jetty.xml" do
   owner "root"
   group "root"
   mode "0644"
-  notifies :restart, resources(:service => "jetty"), :delayed
+  notifies :restart, "service[jetty]"
 end
 
 

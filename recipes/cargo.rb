@@ -47,7 +47,7 @@ template "/etc/jetty/realm.properties" do
     mode 0644
     owner "root"
     group "root"
-    notifies :restart, resources(:service => "jetty"), :delayed
+    notifies :restart, "service[jetty]"
 end
 
 
@@ -59,7 +59,7 @@ cookbook_file web_xml do
     owner "jetty"
     group "jetty"
     action :nothing
-    notifies :restart, resources(:service => "jetty"), :delayed
+    notifies :restart, "service[jetty]"
 end
 
 script "extract war" do
@@ -71,7 +71,7 @@ script "extract war" do
       cd cargo-jetty-6
       jar xf ../cargo-jetty-6-and-earlier-deployer-1.2.2.war
     EOH
-    notifies :restart, resources(:service => "jetty"), :delayed
+    notifies :restart, "service[jetty]"
     action :nothing
 end
 
@@ -83,9 +83,9 @@ remote_file "/usr/share/jetty/webapps/cargo-jetty-6-and-earlier-deployer-1.2.2.w
     mode 0644
     owner "jetty"
     group "jetty"
-    notifies :run, resources(:script => "extract war"), :immediately
-    notifies :create, resources(:cookbook_file => web_xml), :immediately
-    notifies :restart, resources(:service => "jetty"), :delayed
+    notifies :run, "script[extract war]", :immediately
+    notifies :create, "cookbook_file[web_xml]", :immediately
+    notifies :restart, "service[jetty]"
 end
 
 
