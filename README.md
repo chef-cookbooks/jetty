@@ -14,6 +14,8 @@ Platform:
 The following Opscode cookbooks are dependencies:
 
 * java
+* jpackage
+* openssl
 
 Attributes
 ==========
