@@ -24,7 +24,7 @@ when "centos","redhat","fedora"
 
   template "/etc/yum.repos.d/jetty#{node[:platform_version].to_i}0.repo" do
     mode 00644
-    source "jpackage.repo.erb"
+    source "jetty.repo.erb"
     notifies :run, 'execute[yum clean all]', :immediately
   end
 
