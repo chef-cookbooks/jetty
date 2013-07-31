@@ -21,6 +21,13 @@ include_recipe "java"
 case node["platform"]
 when "centos","redhat","fedora"
   include_recipe "jpackage"
+
+  template "/etc/yum.repos.d/jpackage#{node[:platform_version].to_i}.repo" do
+    mode 00644
+    source "jpackage.repo.erb"
+    notifies :run, 'execute[yum clean all]', :immediately
+  end
+
 end
 
 jetty_pkgs = value_for_platform(
