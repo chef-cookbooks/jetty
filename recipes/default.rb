@@ -58,7 +58,7 @@ template "/etc/default/jetty" do
   notifies :restart, "service[jetty]"
 end
 
-template "/etc/jetty/jetty.xml" do
+template "#{node["jetty"]["config_dir"]}/jetty.xml" do
   source "jetty.xml.erb"
   owner "root"
   group "root"
