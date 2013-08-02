@@ -42,7 +42,7 @@ service "jetty" do
   case node["platform"]
   when "centos","redhat","fedora"
     service_name "jetty6"
-    action :enable
+    action [:enable, :start]
     supports :status => true, :start => true, :stop => true, :restart => true
   when "debian","ubuntu"
     service_name "jetty"
