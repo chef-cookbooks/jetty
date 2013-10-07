@@ -24,6 +24,9 @@ default["jetty"]["java_options"] = "-Xmx256m -Djava.awt.headless=true"
 default["jetty"]["cargo"]["username"] = "cargo"
 default["jetty"]["cargo"]["jetty6"]["source"]["url"] = "http://repo1.maven.org/maven2/org/codehaus/cargo/cargo-jetty-6-and-earlier-deployer/1.2.2/cargo-jetty-6-and-earlier-deployer-1.2.2.war"
 default["jetty"]["cargo"]["jetty6"]["source"]["checksum"] = "34ea6285c48c31e579aee69ba138cf94015070aacafc1a993f37a9e6534fe064"
+default["jetty"]["eclipse"]["version"] = "8.1.11.v20130520"
+default["jetty"]["eclipse"]["mirror"] = "http://download.eclipse.org"
+default["jetty"]["hightide"]["version"] = "8.1.11.v20130520"
 
 case platform
 when "centos","redhat","fedora","amazon","scientific"

@@ -15,3 +15,5 @@ end
 end
 
 recipe "jetty::default", "Installs and configures Jetty"
+recipe "jetty::hightide", "Installs and configures Jetty (hightide distribution, deprecated)"
+recipe "jetty::eclipse", "Installs and configures Jetty (eclipse distribution)"
