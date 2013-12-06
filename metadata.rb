@@ -6,9 +6,10 @@ description      "Installs/Configures jetty"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.1.3"
 
-%w{ java jpackage openssl }.each do |cb|
-  depends cb
-end
+#%w{ java jpackage openssl }.each do |cb|
+#  depends cb
+#end
+depends "java"
 
 %w{ debian ubuntu centos redhat fedora }.each do |os|
   supports os
