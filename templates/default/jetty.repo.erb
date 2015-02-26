@@ -1,0 +1,7 @@
+[jpackage-generic-<%= node[:platform_version].to_i %>.0]
+name=JPackage (free), generic
+mirrorlist=http://www.jpackage.org/mirrorlist.php?dist=generic&type=free&release=<%= node[:platform_version].to_i %>.0
+failovermethod=priority
+gpgcheck=1
+gpgkey=http://www.jpackage.org/jpackage.asc
+enabled=1
