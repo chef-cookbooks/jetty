@@ -38,6 +38,7 @@ jetty_pkgs = value_for_platform_family(
 
 package jetty_pkgs do
   action :install
+  options "--nogpgcheck"
 end
 
 template '/etc/default/jetty' do
