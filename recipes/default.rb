@@ -21,6 +21,13 @@ include_recipe 'java' if node['jetty']['install_java']
 case node['platform_family']
 when 'rhel', 'fedora'
   include_recipe 'jpackage'
+
+  execute "install jpackage repo" do
+    command "cd /etc/yum.repos.d/ && wget http://jpackage.org/jpackage50.repo"
+    user "root"
+    not_if { File.exists?("/etc/yum.repos.d/jpackage50.repo") }
+  end
+
 end
 
 jetty_pkgs = value_for_platform_family(
@@ -41,7 +48,7 @@ template '/etc/default/jetty' do
   notifies :restart, 'service[jetty]'
 end
 
-template '/etc/jetty/jetty.xml' do
+template "#{node['jetty']['config_dir']}/jetty.xml" do
   source 'jetty.xml.erb'
   owner 'root'
   group 'root'

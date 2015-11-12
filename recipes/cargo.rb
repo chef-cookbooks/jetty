@@ -23,7 +23,8 @@ unless node['jetty']['cargo']['password']
   Chef::Application.fatal!("Cannot continue unless node['jetty']['cargo']['password'] is set")
 end
 
-template '/etc/jetty/realm.properties' do
+#template '/etc/jetty/realm.properties' do
+template "#{node['jetty']['config_dir']}/realm.properties" do
   source 'realm.properties.erb'
   variables(
     username: node['jetty']['cargo']['username'],
@@ -48,7 +49,7 @@ end
 script 'extract war' do
   interpreter 'bash'
   user 'jetty'
-  cwd '/usr/share/jetty/webapps/'
+  cwd node['jetty']['webapp_dir']
   code <<-EOH
       mkdir cargo-jetty-6
       cd cargo-jetty-6
