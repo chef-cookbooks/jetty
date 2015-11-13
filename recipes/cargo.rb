@@ -23,7 +23,6 @@ unless node['jetty']['cargo']['password']
   Chef::Application.fatal!("Cannot continue unless node['jetty']['cargo']['password'] is set")
 end
 
-#template '/etc/jetty/realm.properties' do
 template "#{node['jetty']['config_dir']}/realm.properties" do
   source 'realm.properties.erb'
   variables(
